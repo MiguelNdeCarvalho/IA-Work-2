@@ -3,20 +3,15 @@ pessoas(['Maria', 'Manuel', 'Madalena', 'Joaquim', 'Ana',
 'Julio','Matilde', 'Gabriel']).
 
 %estado_inicial
-lugares(8). 
-
-estado_inicial([
-    v
-]).
-
-
-frente(A,B) :- pessoas(L), member(A,L),member(B,L), A \= B.
-lado(A,B) :- pessoas(L), member(A,L),member(B,L), A \= B.
-esq(A,B):- pessoas(L), member(A,L),member(B,L), A \= B.
-dir(A,B):- pessoas(L), member(A,L),member(B,L), A \= B.
-cabeceira_esq(A):- pessoas(L), member(A,L).
-cabeceira_dir(A) :- pessoas(L), member(A,L).
-
+estado_inicial(e([
+          v(c(1),L,_),
+          v(c(2),L,_),
+          v(c(3),L,_),
+          v(c(4),L,_),
+          v(c(5),L,_),
+          v(c(6),L,_),
+          v(c(7),L,_),
+          v(c(8),L,_)], [])) :- pessoas(L).
 
 %restricoes
 restricoes([esq('Manuel','Maria'), 
@@ -24,9 +19,17 @@ restricoes([esq('Manuel','Maria'),
             lado('Joaquim', 'Matilde'), 
             cabeceira('Gabriel')]).
 
-%auxiliar
-modDif(I,J,D):- I>J, D is I-J.
-modDif(I,J,D):- I =< J, D is J-I.
+ve_restricoes(e(Nafec,Afect)):- \+ (member(v(c(I),Di,Vi), Afect),
+                                member(v(c(J),Dj,Vj),Afect),  
+                                I \=J),
+                                restric(I,Vi,J,Vj).
+
+restric(I,X,J,Y) :- restricoes(L), member(esq(X,Y),L), \+ (I is J+1; (I=1,J=8)).
+restric(I,X,J,Y) :- restricoes(L), member(dir(X,Y),L), \+ (I is J-1; (I=8,J=1)).
+restric(I,X,J,Y) :- restricoes(L), member(lado(X,Y),L), \+ (I is J-1; (I=8,J=1));
+ (I is J+1; (I=1,J=8)).
+restric(I,X,J,Y) :- restricoes(L), member(cabeceira(X),L), \+ (I is J+1; (I=1,J=8)).
+
 
 %% escreve
 esc(L):- sort(L,L1), write(L1), nl, esc1(L1).
