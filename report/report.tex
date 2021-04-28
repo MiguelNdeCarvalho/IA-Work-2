@@ -40,7 +40,9 @@
 % -------------------------------------------------------------------------------------------
 1 - a) O espaço de estados e os operadores de transição de estados encontra-se no ficheiro
 
-\hspace{1,1cm}\verb|agente.pl|.
+\hspace{1,1cm}\verb|mesa.pl|. Para calcular o estado inicial atribuimos o dominio (pessoas)
+
+\hspace{1,1cm}a cada variável (cadeiras).
 
 \hspace{0,6cm}b) Utilizar os seguintes comandos \verb|[pni].| e em seguida 
 \verb|pesquisa(agente,largura).|
@@ -55,85 +57,69 @@
 
 \hspace{1,1cm}são \textbf{Heurística Greedy} (g) e a \textbf{Heurística A*} (a).
 
-\hspace{0,6cm}e) Utilizar os seguintes comandos \verb|[pi].| e em seguida 
-\verb|pesquisa(agente,g).|
+\hspace{0,6cm}e)
 
-\hspace{0,6cm}f)
+\hspace{1cm}i. 1 - Manuel
 
-\hspace{1cm}i. O número de estados visitados pelo algoritmo das linhas anteriores é \textbf{10}.
+\hspace{1,4cm}2 - Joaquim
 
-\hspace{1cm}ii. O número de estados visitados que estão simultaneamente em memória é \textbf{11}.
+\hspace{1,4cm}3 - Madalena
 
+\hspace{1,4cm}4 - Maria
+\newline
 
-\begin{table}[h!]
-    \begin{center}
-        \begin{tabular}{l|c|c|c|c}
-            \textbf{Algoritmo} & \textbf{Nº nós visitados} & \textbf{Nº nós em memória} & \textbf{Encontra solução} & \textbf{Melhor solução}\\
-            \hline
-            largura      & 64        & 36 & sim & sim \\
-            \hline
-            profundidade & 20        & 15 & sim & não \\
-            \hline
-            iterativo    & 3968322   & 18 & sim & não \\
-            \hline
-            greedy       & 10        & 11  & sim & sim \\
-            \hline
-            a*           & 44        & 22 & sim & não
-        \end{tabular}
-        \caption{Resumo do problema do Agente.}
-        \label{tab:table1}
-    \end{center}
-\end{table}
+\hspace{1cm}ii. 1 - Manuel
 
-% -------------------------------------------------------------------------------------------
+\hspace{1,5cm}2 - Joaquim
+
+\hspace{1,5cm}3 - Madalena
+
+\hspace{1,5cm}4 - Maria
+
+\hspace{1,5cm}5 - Ana
+
+\hspace{1,5cm}6 - Júlio
+\newline
+
+\hspace{1cm}iii. 1 - Matilde
+
+\hspace{1,6cm}2 - Joaquim
+
+\hspace{1,6cm}3 - Gabriel
+
+\hspace{1,6cm}4 - Maria
+
+\hspace{1,6cm}5 - Manuel
+
+\hspace{1,6cm}6 - Madalena
+
+\hspace{1,6cm}7 - Ana
+
+\hspace{1,6cm}8 - Júlio
 \newpage
+\hspace{1cm}iiii. 1 - Manuel
 
-2 - a) O espaço de estados e os operadores de transição de estados encontra-se no ficheiro
+\hspace{1,7cm}2 - Joaquim
 
-\hspace{1,1cm}\verb|caixa.pl|.
+\hspace{1,7cm}3 - Matilde
 
-\hspace{0,6cm}b) Utilizar os seguintes comandos \verb|[pni].| e em seguida 
-\verb|pesquisa(caixa,largura).|
+\hspace{1,7cm}4 - Madalena
 
-\hspace{0,6cm}c)
+\hspace{1,7cm}5 - Ana
 
-\hspace{1cm}i. O número de estados visitados pelo algoritmo das linhas anteriores é \textbf{4211}.
+\hspace{1,7cm}6 - Julio
 
-\hspace{1cm}ii. O número de estados visitados que estão simultaneamente em memória é \textbf{606}.
+\hspace{1,7cm}7 - Gabriel
 
-\hspace{0,6cm}d) As duas heurísticas admissíveis para estimar o custo de um estado até à solução
+\hspace{1,7cm}8 - Filipe
 
-\hspace{1,1cm}são \textbf{Heurística Greedy} (g) e a \textbf{Heurística A*} (a).
+\hspace{1,7cm}9 - Miguel
 
-\hspace{0,6cm}e) Utilizar os seguintes comandos \verb|[pi].| e em seguida 
-\verb|pesquisa(caixa,g).|
+\hspace{1,7cm}10 - Joao
 
-\hspace{0,6cm}f)
+\hspace{1,7cm}11 - CAP
 
-\hspace{1cm}i. O número de estados visitados pelo algoritmo das linhas anteriores é \textbf{341}.
-
-\hspace{1cm}ii. O número de estados visitados que estão simultaneamente em memória é \textbf{46}.
-
-
-\begin{table}[h!]
-    \begin{center}
-        \begin{tabular}{l|c|c|c|c}
-            \textbf{Algoritmo} & \textbf{Nº nós visitados} & \textbf{Nº nós em memória} & \textbf{Encontra solução} & \textbf{Melhor solução}\\
-            \hline
-            largura      & 4211 & 606 & sim & sim \\
-            \hline
-            profundidade & 1989 & 180 & sim & não \\
-            \hline
-            iterativo    & -    & -   & não & -   \\
-            \hline
-            greedy       & 341  & 46  & sim & sim \\
-            \hline
-            a*           & 2078 & 525 & sim & não
-        \end{tabular}
-        \caption{Resumo do problema da Caixa.}
-        \label{tab:table1}
-    \end{center}
-\end{table}
+\hspace{1,7cm}12 - Maria
 
 % -------------------------------------------------------------------------------------------
 \end{document}
