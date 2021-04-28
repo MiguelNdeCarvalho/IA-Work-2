@@ -56,7 +56,7 @@ ve_restricoes(e(_, Afect)):- \+ ((member(v(c(I), _, Vi), Afect),
                                  restric(J, Vj))).
 
 
-/*%4 pessoas
+%4 pessoas
 restric(I, X, J, Y):- restricoes(L),
                       member(frente(X, Y), L),
                       \+ ((I = 1, J = 3);
@@ -167,7 +167,7 @@ restric(I, X):- restricoes(L),
 restric(I, X):- restricoes(L),
                 member(cabeceira(X), L),
                 \+ ((I = 1;
-                     I = 5)).*/
+                     I = 5)).
 
 
 %12 pessoas

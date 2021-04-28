@@ -72,7 +72,7 @@ estado_inicial(e([v(c(1, 1), D, _),
                   v(c(9, 8), D, _),
                   v(c(9, 9), D, _)],
                   
-                  [v(c(1, 2), D, 1),
+                 [v(c(1, 2), D, 1),
                   v(c(1, 6), D, 8),
                   v(c(1, 8), D, 7),
                   v(c(1, 9), D, 3),
@@ -98,22 +98,22 @@ estado_inicial(e([v(c(1, 1), D, _),
 
 
 ve_restricoes(e(_, Afect)):- \+ (member(v(c(I), _, Vi), Afect),
-                                 member(v(c(J), _, Vj), Afect),  
-                                 I \;= J),
-                                 restricoes(I, Vi, J, Vj).
+                                 member(v(c(J), _, Vj), Afect),
+                                 I \= J),
+                                restricoes(I, Vi, J, Vj).
             
 
-restricoes((L, C), I, (X, Y), J):- L = X;
-                                   C = Y;
-                                   (quadrante((L, C), (Qxi, Qyi)),
-                                   quadrante((X, Y), (Qxj, Qyj)),
-                                   Qxi = Qxj,
-                                   Qyi = Qyj),
-                                   I = J.
+restricoes((L, C), Vi, (X, Y), Vj):- Vi = Vj,
+                                     (L = X;
+                                      C = Y;
+                                      (quadrante((L, C), (Qxi, Qyi)),
+                                       quadrante((X, Y), (Qxj, Qyj)),
+                                       Qxi = Qxj,
+                                       Qyi = Qyj)).
 
 
 quadrante((X, Y), (Qx, Qy)):- Qx is X div 3,
-                              Ql is Y div 3.
+                              Qy is Y div 3.
 
 
 esc(L):- sort(L, L1),
@@ -127,4 +127,4 @@ esc1([v(c(X, Y), _, V)|R]):- esc((X, Y), V),
                              esc1(R).
 
 
-esc((X, Y), V):- (Y = 9, write(V), write(' '), nl); write(V), write(' ').
+esc((X, Y), V):- write(V), (Y = 9, nl; write(' ')).
