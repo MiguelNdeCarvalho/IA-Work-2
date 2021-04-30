@@ -13,7 +13,7 @@ back(E, Sol):- sucessor(E, E1),
 sucessor(e([v(N, D, V)|R], E), e(R, [v(N, D, V)|E])):- member(V, D).
 
 
-estado_inicial(e([v(c(1, 1), D, _),
+/*estado_inicial(e([v(c(1, 1), D, _),
                   v(c(1, 2), D, _),
                   v(c(1, 3), D, _),
                   v(c(2, 1), D, _),
@@ -21,9 +21,9 @@ estado_inicial(e([v(c(1, 1), D, _),
                   v(c(2, 3), D, _),
                   v(c(3, 1), D, _),
                   v(c(3, 2), D, _),
-                  v(c(3, 3), D, _)], [])):- D = [1, 2, 3, 4, 5, 6, 7, 8, 9].
+                  v(c(3, 3), D, _)], [])):- D = [1, 2, 3, 4, 5, 6, 7, 8, 9].*/
 
-/*estado_inicial(e([v(c(1, 1), D, _),
+estado_inicial(e([v(c(1, 1), D, _),
                   v(c(1, 3), D, _),
                   v(c(1, 4), D, _),
                   v(c(1, 5), D, _),
@@ -104,13 +104,14 @@ estado_inicial(e([v(c(1, 1), D, _),
                   v(c(8, 5), D, 4),
                   v(c(8, 8), D, 3),
                   v(c(9, 3), D, 5),
-                  v(c(9, 6), D, 3)])):- D = [1, 2, 3, 4, 5, 6, 7, 8, 9].*/
+                  v(c(9, 6), D, 3)])):- D = [1, 2, 3, 4, 5, 6, 7, 8, 9].
 
 
-ve_restricoes(e(NAfect, Afect)):- \+ (member(v(c(I), _, Vi), Afect),
-                                      member(v(c(J), _, Vj), Afect),
-                                      I \= J),
-                                      restricoes(I, Vi, J, Vj).
+ve_restricoes(e(NAfect, Afect)):- \+ (member(v(c(I, J), _, Vi), Afect),
+                                      member(v(c(X, Y), _, Vj), Afect),
+                                      (I \= X;
+                                      J \= Y),
+                                      restricoes((I, J), Vi, (X, Y), Vj)).
             
 
 restricoes((L, C), Vi, (X, Y), Vj):- Vi = Vj,
@@ -122,8 +123,8 @@ restricoes((L, C), Vi, (X, Y), Vj):- Vi = Vj,
                                        Qyi = Qyj)).
 
 
-quadrante((X, Y), (Qx, Qy)):- Qx is X div 3,
-                              Qy is Y div 3.
+quadrante((X, Y), (Qx, Qy)):- Qx is (X - 1) div 3,
+                              Qy is (Y - 1) div 3.
 
 
 esc(L):- sort(L, L1),
@@ -137,4 +138,4 @@ esc1([v(c(_, Y), _, V)|R]):- esc(Y, V),
                              esc1(R).
 
 
-esc(Y, V):- write(V), (Y = 3, nl; write(' ')).
+esc(Y, V):- write(V), (Y = 9, nl; write(' ')).
