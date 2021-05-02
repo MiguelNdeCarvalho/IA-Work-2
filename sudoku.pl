@@ -1,13 +1,40 @@
+:- dynamic(nos/1).
+
+
+nos(0).
+
+
 p :- estado_inicial(E0),
      back(E0, A),
      esc(A).
 
 
+inc:- retract(nos(N)),
+      N1 is N + 1,
+      asserta(nos(N1)).
+
+
 back(e([], A), A).
 
-back(E, Sol):- sucessor(E, E1),
+/*back(E, Sol):- sucessor(E, E1),
                ve_restricoes(E1),
-               back(E1, Sol).
+               back(E1, Sol).*/
+
+
+back(E, Sol):- sucessor(E, E1),
+               inc,
+               ve_restricoes(E1),
+               forCheck(E1, E2),
+               back(E2, Sol).
+
+
+forCheck(e(Lni, [v(N, D, V)|Li]), e(Lnii, [v(N, D, V)|Li])):- corta(V, Lni, Lnii).
+
+
+corta(_, [], []).
+
+corta(V, [v(N, D, _)|Li], [v(N, D1, _)|Lii]):- delete(D, V, D1),
+                                               corta(V, Li, Lii).
 
 
 sucessor(e([v(N, D, V)|R], E), e(R, [v(N, D, V)|E])):- member(V, D).
@@ -138,4 +165,4 @@ esc1([v(c(_, Y), _, V)|R]):- esc(Y, V),
                              esc1(R).
 
 
-esc(Y, V):- write(V), (Y = 9, nl; write(' ')).
+esc(Y, V):- write(V), (Y = 3, nl; write(' ')).

@@ -1,13 +1,40 @@
+:- dynamic(nos/1).
+
+
+nos(0).
+
+
 p :- estado_inicial(E0),
      back(E0, A),
      esc(A).
 
 
+inc:- retract(nos(N)),
+      N1 is N + 1,
+      asserta(nos(N1)).
+
+
 back(e([], A), A).
 
-back(E, Sol):- sucessor(E, E1),
+/*back(E, Sol):- sucessor(E, E1),
                ve_restricoes(E1),
-               back(E1, Sol).
+               back(E1, Sol).*/
+
+
+back(E, Sol):- sucessor(E, E1),
+               inc,
+               ve_restricoes(E1),
+               forCheck(E1, E2),
+               back(E2, Sol).
+
+
+forCheck(e(Lni, [v(N, D, V)|Li]), e(Lnii, [v(N, D, V)|Li])):- corta(V, Lni, Lnii).
+
+
+corta(_, [], []).
+
+corta(V, [v(N, D, _)|Li], [v(N, D1, _)|Lii]):- delete(D, V, D1),
+                                               corta(V, Li, Lii).
 
 
 sucessor(e([v(N, D, V)|R], E), e(R, [v(N, D, V)|E])):- member(V, D).
@@ -24,7 +51,7 @@ pessoas(['Maria',
          'Filipe',
          'Miguel',
          'Joao',
-         'CAP']).
+         'Inacio']).
 
 
 estado_inicial(e([v(c(1), L, _),
@@ -56,7 +83,7 @@ ve_restricoes(e(_, Afect)):- \+ ((member(v(c(I), _, Vi), Afect),
                                  restric(J, Vj))).
 
 
-%4 pessoas
+/*%4 pessoas
 restric(I, X, J, Y):- restricoes(L),
                       member(frente(X, Y), L),
                       \+ ((I = 1, J = 3);
@@ -167,7 +194,7 @@ restric(I, X):- restricoes(L),
 restric(I, X):- restricoes(L),
                 member(cabeceira(X), L),
                 \+ ((I = 1;
-                     I = 5)).
+                     I = 5)).*/
 
 
 %12 pessoas
