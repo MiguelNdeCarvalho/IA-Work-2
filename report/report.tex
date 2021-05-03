@@ -1,0 +1,162 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper, total={16cm, 24cm}]{geometry}
+\usepackage[portuguese]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{tikz}
+    \usetikzlibrary{shadows}
+\usepackage{booktabs}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage{listings}
+    \renewcommand\lstlistingname{Listagem}
+    \lstset{numbers=left, numberstyle=\tiny, numbersep=5pt, basicstyle=\footnotesize\ttfamily, frame=tb,rulesepcolor=\color{gray}, breaklines=true}
+\usepackage{blindtext}
+
+% -------------------------------------------------------------------------------------------
+\title
+{
+    \includegraphics[width=0.4\textwidth]{imgs/university.png}
+    \\[0.1cm]
+    \textbf{2º Trabalho} \\
+    Inteligência Artificial
+}
+
+\author
+{
+    \textbf{Professora:} Irene Rodrigues \\
+    \textbf{Realizado por:} Filipe Alfaiate (43315), Miguel de Carvalho (43108), João Pereira (42864) 
+}
+\date{\today}
+
+% -------------------------------------------------------------------------------------------
+%                                Body                                                       %
+% -------------------------------------------------------------------------------------------
+
+\begin{document}
+\maketitle
+
+% -------------------------------------------------------------------------------------------
+\section{}
+
+\hspace{0,6cm}a) O espaço de estados e os operadores de transição de estados encontra-se no ficheiro.
+\verb|mesa.pl|. Para calcular o estado inicial atribuimos o dominio (pessoas) a cada variável (cadeiras).
+
+b) Utilizar o seguinte comando '\verb|[mesa].|' e em seguida '\verb|p.|'.
+
+c) Utilizar os seguinte comando '\verb|[mesa].|' e em seguida '\verb|p.|'. Para correr de forma desejada 
+é necessário comentar o predicado \verb|back(e([], A), A).| que se encontra nas linhas 19-21 e descomentar
+o predicado \verb|back(E, Sol).| que se encontra nas linhas 24-28.
+
+d) Não encontrámos uma forma diferente que apresente uma melhoria significativa que diminua a complexidade
+(temporal e epacial).
+
+e)
+
+\hspace{0,7cm}i. 1 - Manuel
+
+\hspace{1,1cm}2 - Joaquim
+
+\hspace{1,1cm}3 - Madalena
+
+\hspace{1,1cm}4 - Maria
+\newline
+
+\hspace{0,6cm}ii. 1 - Manuel
+
+\hspace{1,1cm}2 - Joaquim
+
+\hspace{1,1cm}3 - Madalena
+
+\hspace{1,1cm}4 - Maria
+
+\hspace{1,1cm}5 - Ana
+
+\hspace{1,1cm}6 - Júlio
+\newline
+
+\hspace{0,5cm}iii. 1 - Matilde
+
+\hspace{1,1cm}2 - Joaquim
+
+\hspace{1,1cm}3 - Gabriel
+
+\hspace{1,1cm}4 - Maria
+
+\hspace{1,1cm}5 - Manuel
+
+\hspace{1,1cm}6 - Madalena
+
+\hspace{1,1cm}7 - Ana
+
+\hspace{1,1cm}8 - Júlio
+\newpage
+\hspace{0,5cm}iv. 1 - Manuel
+
+\hspace{1,1cm}2 - Joaquim
+
+\hspace{1,1cm}3 - Matilde
+
+\hspace{1,1cm}4 - Madalena
+
+\hspace{1,1cm}5 - Ana
+
+\hspace{1,1cm}6 - Julio
+
+\hspace{1,1cm}7 - Gabriel
+
+\hspace{1,1cm}8 - Filipe
+
+\hspace{1,1cm}9 - Miguel
+
+\hspace{1,1cm}10 - Joao
+
+\hspace{1,1cm}11 - Inácio
+
+\hspace{1,1cm}12 - Maria
+\newline
+% -------------------------------------------------------------------------------------------
+\section{}
+
+\hspace{0,6cm}a) O espaço de estados e os operadores de transição de estados encontra-se no ficheiro
+\verb|sudoku.pl|. Para calcular o estado inicial atribuimos o dominio (1-9) a cada variável (posição).
+
+b) Utilizar os seguintes comandos '\verb|[sudoku].|' e em seguida '\verb|p.|'.
+
+c) Utilizar os seguinte comando '\verb|[sudoku].|' e em seguida '\verb|p.|'. Para correr de forma desejada 
+é necessário comentar o predicado \verb|back(e([], A), A).| que se encontra nas linhas 19-21 e descomentar
+o predicado \verb|back(E, Sol).| que se encontra nas linhas 24-28.
+
+d) Não encontrámos uma forma diferente que apresente uma melhoria significativa que diminua a
+complexidade (temporal e epacial).
+\newline
+
+Exemplo de um output:
+\begin{table}[h!]
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            5 & 1 & 9 & 4 & 2 & 8 & 6 & 7 & 3 \\
+            \hline
+            6 & 3 & 4 & 5 & 7 & 9 & 1 & 8 & 2 \\
+            \hline
+            7 & 2 & 8 & 3 & 1 & 6 & 9 & 5 & 4 \\
+            \hline
+            3 & 5 & 2 & 1 & 8 & 4 & 7 & 9 & 6 \\
+            \hline
+            9 & 7 & 6 & 2 & 3 & 5 & 4 & 1 & 8 \\
+            \hline
+            8 & 4 & 1 & 9 & 6 & 7 & 3 & 2 & 5 \\
+            \hline
+            4 & 9 & 3 & 7 & 5 & 2 & 8 & 6 & 1 \\
+            \hline
+            2 & 6 & 7 & 8 & 4 & 1 & 5 & 3 & 9 \\
+            \hline
+            1 & 8 & 5 & 6 & 9 & 3 & 2 & 4 & 7 \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+% -------------------------------------------------------------------------------------------
+\end{document}
