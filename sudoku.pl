@@ -24,7 +24,7 @@ back(e([], A), A).
 back(E, Sol):- sucessor(E, E1),
                inc,
                ve_restricoes(E1),
-               forCheck(E1, E2),
+               \+ (forCheck(E1, E2)),
                back(E2, Sol).
 
 
@@ -33,8 +33,9 @@ forCheck(e(Lni, [v(N, D, V)|Li]), e(Lnii, [v(N, D, V)|Li])):- corta(V, Lni, Lnii
 
 corta(_, [], []).
 
-corta(V, [v(N, D, _)|Li], [v(N, D1, _)|Lii]):- delete(D, V, D1),
-                                               corta(V, Li, Lii).
+corta(V, [v(Ni, D, _)|Li], [v(Nj, D1, _)|Lii]):- restricoes(Ni, Nj),
+                                                 delete(D, V, D1),
+                                                 corta(V, Li, Lii).
 
 
 sucessor(e([v(N, D, V)|R], E), e(R, [v(N, D, V)|E])):- member(V, D).
@@ -137,17 +138,17 @@ estado_inicial(e([v(c(1, 1), D, _),
 ve_restricoes(e(NAfect, Afect)):- \+ (member(v(c(I, J), _, Vi), Afect),
                                       member(v(c(X, Y), _, Vj), Afect),
                                       (I \= X;
-                                      J \= Y),
-                                      restricoes((I, J), Vi, (X, Y), Vj)).
+                                       J \= Y),
+                                      Vi = Vj,
+                                      restricoes((I, J), (X, Y))).
             
 
-restricoes((L, C), Vi, (X, Y), Vj):- Vi = Vj,
-                                     (L = X;
-                                      C = Y;
-                                      (quadrante((L, C), (Qxi, Qyi)),
-                                       quadrante((X, Y), (Qxj, Qyj)),
-                                       Qxi = Qxj,
-                                       Qyi = Qyj)).
+restricoes((L, C), (X, Y)):- L = X;
+                             C = Y;
+                             (quadrante((L, C), (Qxi, Qyi)),
+                              quadrante((X, Y), (Qxj, Qyj)),
+                              Qxi = Qxj,
+                              Qyi = Qyj).
 
 
 quadrante((X, Y), (Qx, Qy)):- Qx is (X - 1) div 3,
@@ -165,4 +166,4 @@ esc1([v(c(_, Y), _, V)|R]):- esc(Y, V),
                              esc1(R).
 
 
-esc(Y, V):- write(V), (Y = 3, nl; write(' ')).
+esc(Y, V):- write(V), (Y = 9, nl; write(' ')).
